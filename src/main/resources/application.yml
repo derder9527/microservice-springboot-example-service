@@ -1,0 +1,14 @@
+server:
+  port: 30001
+  servlet:
+    context-path: /mcss
+
+mc:
+  project:
+    version: 0.0.1
+    name: ${spring.application.name}
+
+
+spring:
+  application:
+    name: mc-springboot-services
