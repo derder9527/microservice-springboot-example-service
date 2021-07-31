@@ -18,9 +18,9 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - name: Extract branch name
+    - name: Extract git info
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})" && echo "##[set-output name=sha;]$(echo ${GITHUB_REF#refs/heads/})"
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})" && echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       id: extract_git_info
 
     - name: Get current date
