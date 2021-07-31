@@ -31,7 +31,7 @@ jobs:
       name: Build & push Docker image
       with:
         image: derder9527/microservice-springboot-services
-        tags: ${{ steps.extract_git_info.outputs.branch }}-${{ steps.extract_git_info.outputs.sha }}-${{ steps.date.outputs.date }} , latest
+        tags: ${{ steps.extract_git_info.outputs.branch }}-${{ steps.extract_git_info.outputs.sha_short }}-${{ steps.date.outputs.date }} , latest
         registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USER_NAME }}
