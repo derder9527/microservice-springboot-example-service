@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set time zone
+      run: sudo timedatectl set-timezone 'Asia/Taipei'
+
     - uses: actions/checkout@v2
 
     - name: Extract branch name
