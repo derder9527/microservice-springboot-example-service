@@ -25,7 +25,7 @@ jobs:
 
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H%M')"
+      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M')"
 
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
