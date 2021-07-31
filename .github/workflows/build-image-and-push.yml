@@ -20,8 +20,10 @@ jobs:
 
     - name: Extract branch name
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
+      run:  |
+      echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      echo "##[set-output name=sha;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_git_info
 
     - name: Get current date
       id: date
@@ -31,7 +33,7 @@ jobs:
       name: Build & push Docker image
       with:
         image: derder9527/microservice-springboot-services
-        tags: ${{ steps.extract_branch.outputs.branch }}-${{ steps.date.outputs.date }} , latest
+        tags: ${{ steps.extract_git_info.outputs.branch }}-${{ steps.extract_git_info.outputs.sha }}-${{ steps.date.outputs.date }} , latest
         registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USER_NAME }}
